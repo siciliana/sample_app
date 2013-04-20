@@ -1,12 +1,7 @@
-<% if object.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains <%= pluralize(object.errors.count, "error") %>.
-    </div>
-    <ul>
-    <% object.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
-    <% end %>
-    </ul>
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: @micropost %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
   </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
